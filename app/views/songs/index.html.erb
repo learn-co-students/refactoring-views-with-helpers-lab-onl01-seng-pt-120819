@@ -1,7 +1,14 @@
 <ul>
 <% @songs.each do |song| %>
   <li><%= link_to song.title, song_path(song) %></li>
+  <% if song.artist == nil  %>
+    <li><%= link_to "Add Artist", edit_song_path(song) %></li>
+    <% else %>
+    <li><%= display_artist song %></li>
+  <% end %>
 <% end %>
+
+
 </ul>
 <br>
 <%= link_to "Add New Song", new_song_path %>
